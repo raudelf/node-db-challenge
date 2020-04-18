@@ -40,6 +40,11 @@ function addResource(data) {
         .insert(data);
 };
 
+function addProjRes(data) {
+    return db('project_resources')
+        .insert(data);
+};
+
 module.exports = {
     find,
     findTasks,
@@ -48,4 +53,5 @@ module.exports = {
     addProj,
     addTask,
     addResource,
+    addProjRes
 }

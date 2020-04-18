@@ -107,4 +107,20 @@ router.post('/resources', (req, res) => {
     };
 });
 
+router.post('/projects/resources', (req, res) => {
+    const resData = req.body;
+
+    if(resData.project_id && resData.resource_id) {
+        Schemes.addProjRes(resData)
+            .then(data => {
+                res.status(201).json(data);
+            })
+            .catch(err => {
+                res.status(500).json({ message: 'Failed to create new project resource'})
+            });
+    } else {
+        res.status(400).json({ error: 'You must include a project id and resource id in your post'})
+    };
+});
+
 module.exports = router;
